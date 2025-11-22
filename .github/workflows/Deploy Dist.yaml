@@ -1,7 +1,7 @@
 name: Deploy Dist folder
 on: push
 jobs:
-  greet:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: greet user
