@@ -1,13 +1,13 @@
 name: Deploy Dist folder
 # on: [push, workflow_dispatch]
 on:
-  push:
-    branches:
-      - main
-      - "feature/**"
-    paths-ignore:
-      - README.md
-      - ".github/workflows/*"
+  # push:
+  #   branches:
+  #     - main
+  #     - "feature/**"
+  #   paths-ignore:
+  #     - README.md
+  #     - ".github/workflows/*"
   workflow_dispatch:
 jobs:
   test:
