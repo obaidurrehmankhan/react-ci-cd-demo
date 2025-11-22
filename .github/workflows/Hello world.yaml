@@ -1,41 +1,11 @@
 name: Greet User
+# on: push
 on: workflow_dispatch
 jobs:
   greet:
     runs-on: ubuntu-latest
     steps:
       - name: greet user
-        uses: actions/checkout@v4
-      - name: Setup Node and install depencencies
-        uses: ./.github/actions/setupnode
-        with:
-          node-version: 22
-      - name: print node node-version
-        run: node -v
-      - name: install dependencies
-        run: npm install
-      - name: Run Tests
-        run: npm run test
-      - name: complete message
-        run: echo "Hello world! Your workflow ran successfully."
-  build:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get Code
-        uses: actions/checkout@v4
-      - name: Setup Node and install depencencies
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: install dependencies
-        run: npm install
-      - name: build project
-        run: npm run build
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Dist
-        run: |
-          echo 'deployment completed successfully'
+        run: echo "Hello World!!"
+      - name: Bye user
+        run: echo "Bye Bye!!"
