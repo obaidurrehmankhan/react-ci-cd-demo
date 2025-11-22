@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"https://mukeshphulwani66.github.io/react-cidcd-demo-gitactions",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,7 +11,6 @@
     "test": "vitest"
   },
   "dependencies": {
-    "nodemon": "^3.1.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
