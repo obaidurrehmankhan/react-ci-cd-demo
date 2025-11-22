@@ -1,26 +1,24 @@
 name: Deploy Dist folder
-on: [push, workflow_dispatch]
+# on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+    paths-ignore:
+      - README.md
+      - ".github/workflows/*"
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: greet user
+      - name: Get code
         uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Node and install depencencies
+        uses: ./.github/actions/setupnode
         with:
-          node-version: 22
-      - name: print node node-version
-        run: node -v
-      - name: cache dependencies
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+          node-version: 20
       - name: Run Tests
         run: npm run test
       - name: complete message
@@ -32,18 +30,9 @@ jobs:
       - name: Get Code
         uses: actions/checkout@v4
       - name: Setup Node and install depencencies
-        uses: actions/setup-node@v4
+        uses: ./.github/actions/setupnode
         with:
-          node-version: 22
-      - name: cache dependencies
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm install
+          node-version: 20
       - name: build project
         run: npm run build
       - name: Upload dist artifact
