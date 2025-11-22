@@ -5,6 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: greet user
-        run: echo "Hello World!!"
-      - name: Bye user
-        run: echo "Bye Bye!!"
+        uses: actions/checkout@v4
+      - name: Setup Node and install depencencies
+        uses: ./.github/actions/setupnode
+        with:
+          node-version: 20
+      - name: print node node-version
+        run: node -v
+      - name: install dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm run test
+      - name: complete message
+        run: echo "Hello world! Your workflow ran successfully."
